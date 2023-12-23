@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>latihan</title>
+    <style>
+      body {
+        font-family: arial;
+        margin: 0;
+        padding: 0;
+        color: white;
+        text-align: center;
+      }
+      .container {
+        width: 800px;
+        margin: auto;
+        border: 1px solid black;
+        padding: 5px;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "nav nav nav"
+          "aside main article"
+          "footer footer footer";
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 1.3fr 1fr 3fr 2fr;
+      }
+      header {
+        grid-area: header;
+        background-color: #49a9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      nav {
+        grid-area: nav;
+        background-color: #b86fea;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      aside {
+        grid-area: aside;
+        background-color: #ea6f86;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      main {
+        grid-area: main;
+        background-color: #95ea6f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      article {
+        grid-area: article;
+        background-color: #ea6f86;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      footer {
+        grid-area: footer;
+        background-color: #eadc6f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>HEADER</h1>
+      </header>
+      <nav>
+        <h1>NAVIGATION</h1>
+      </nav>
+      <aside>
+        <h1>SIDEBAR KIRI</h1>
+      </aside>
+      <main>
+        <h1>ISI</h1>
+      </main>
+      <article>
+        <h1>SIDEBAR KANAN</h1>
+      </article>
+      <footer>
+        <h1>FOOTER</h1>
+      </footer>
+    </div>
+  </body>
+</html>

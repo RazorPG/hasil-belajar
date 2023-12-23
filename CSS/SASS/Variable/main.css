@@ -1,0 +1,36 @@
+/*:root {
+  --primary-color:#d033de;
+  --secondary-color:#6dde33;
+  --text-color:#33b9de;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+h1 {
+  color: var(--text-color);
+}
+p {
+  color: var(--secondary-color);
+}*/
+/*
+  $secondary-color:#6dde33;
+  $text-color:#33b9de;
+  $primary-color:green;
+  
+body {
+  $primary-color:#d033de !global;
+  background-color: $primary-color;
+}
+
+h1 {
+  color: $primary-color;
+}*/
+/*$alert-danger:red;
+$alert-success:green;
+$alert-warning:orange;
+*/
+h1 {
+  color: green;
+}

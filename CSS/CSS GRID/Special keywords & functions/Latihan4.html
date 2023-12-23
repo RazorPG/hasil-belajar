@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CSS grid | minmax</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #ddd;
+      }
+      .container {
+        width: 60%;
+        margin: 50px auto;
+        display: grid;
+        padding: 2px;
+        grid-template-columns:1fr minmax(200px,300px) 1fr ;
+      }
+      .item {
+        background-color: rgb(160, 234, 111);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .item:nth-child(even) {
+        background-color: rgb(111, 234, 214);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">rafid</div>
+      <div class="item">2</div>
+      <div class="item">hilmi Lorem ipsum dolor sit amet, col</div>
+      <!--<div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item">8</div>
+      <div class="item">9</div>-->
+    </div>
+  </body>
+</html>

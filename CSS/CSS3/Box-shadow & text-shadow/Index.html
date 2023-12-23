@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Box-shadow</title>
+    <style>
+      div {
+        width: 150px;
+        height: 150px;
+        background-color: #bd1ae5;
+        margin: 50px auto;
+        box-shadow: 0 0 0 5px red, 0 0 0 10px yellow, 0 0 0 15px green,
+          0 0 0 20px blue;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
+      div:hover {
+              box-shadow: inset 0px 40px 5px -20px rgba(0, 0, 0, 0.15);
+        margin-top: 20px;
+      }
+      p {
+        font-size: 50px;
+        font-family: arial;
+        text-align: center;
+        color: white;
+        text-shadow: 0 2px 1px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="kotak"></div>
+    <p>Lorem ipsum dolor sit.</p>
+  </body>
+</html>

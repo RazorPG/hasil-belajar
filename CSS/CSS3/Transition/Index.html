@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>transition</title>
+    <style>
+      .container {
+        width: 360px;
+        margin: 10px auto;
+        border: 5px solid black;
+        overflow: hidden;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .kotak {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        text-align: center;
+        line-height:100px ;
+        margin: 5px 0;
+      }
+      .kotak1 {
+        transition: margin-left ease 3s , transform 3s 2s, background-color 500ms 3s;
+      }
+      .kotak2 {
+        transition: ease-in 3s 0.5s;
+      }
+      .kotak3 {
+        transition: ease-out 3s 0.5s;
+      }
+      .kotak4 {
+        transition: ease-in-out 3s 0.5s;
+      }
+      .kotak5 {
+        transition: linear 3s 0.5s;
+      }
+      .kotak6 {
+        transition: cubic-bezier(.55,.95,.54,.19) 3s 0.5s;
+      }
+      .container:hover .kotak {
+        transform: rotate(360deg);
+        margin-left: 260px;
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="kotak kotak1">ease</div>
+      <div class="kotak kotak2">ease-in</div>
+      <div class="kotak kotak3">ease-out</div>
+      <div class="kotak kotak4">ease-in-out</div>
+      <div class="kotak kotak5">linear</div>
+      <div class="kotak kotak6">bazier</div>
+    </div>
+  </body>
+</html>

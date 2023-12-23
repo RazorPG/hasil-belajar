@@ -1,0 +1,59 @@
+h1, h2 {
+  color:gold;
+}
+ul li a {
+  color:skyblue;
+}
+ol li a {
+  color: gray; 
+}
+.p1 {
+  color:royalblue;
+}
+.p2 {
+  color: violet;
+}
+.cetak-tebal {
+  font-weight: bold;
+}
+p.cetak-tebal{
+  font-size: 10px;
+}
+.hello:link {
+  color: red;
+}
+.hello:hover{
+  font-family:arial ;
+  font-size:15px;
+}
+.hello:active {
+  font-style: italic;
+}
+.hello:visited {
+  color:gold;
+}
+ul li:first-child a {
+  color:green ;
+}
+ul li:nth-child(odd) a:hover {
+  color:blue ;
+}
+ol li:nth-child(2n-1) a {
+  color:blue ;
+}
+ol li:last-child a {
+  color:green ;
+}
+p:first-of-type {
+  color:#00ff00
+}
+p:last-of-type {
+  color:aqua
+}
+  
+  
+  
+
+
+  
+  

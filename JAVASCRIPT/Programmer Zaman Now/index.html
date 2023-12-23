@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      document.writeln("<h1>hello world</h1>");
+      document.writeln(true); // benar
+      document.writeln(0xff); // 255
+      document.writeln(false); // salah
+      document.writeln("</br>");
+      //document.writeln(0b1111010); // 122
+
+      document.writeln("<textarea cols='40' rows='10'>");
+      document.write("rafid \nhilmi\n");
+      document.write("\\home\\razor\n");
+      document.write("'razorsan'");
+      document.writeln("</textarea>");
+
+      //variabel
+      let channel1 = "naplive";
+      let channel2 = "windah basudara";
+      let channel3 = "miawaug";
+      console.log(channel1 + "\b" + channel2 + "\b" + channel3);
+      let warna = "biru";
+      warna = "merah";
+      document.writeln(warna);
+
+      // operasi matematika
+      let result = 1 + 2;
+      document.writeln("<p>1 + 2 = " + result + "</p>");
+      let originalResult = result;
+      result = result - 1;
+      document.writeln("<p>" + originalResult + " - 1 = " + result + "</p>");
+      originalResult = result;
+      result = result * 3;
+      document.writeln("<p>" + originalResult + " x 3 = " + result + "</p>");
+      originalResult = result;
+
+      //operator unary
+      let ctrl = 1;
+      document.writeln("<p>" + ctrl + "</p>");
+      ctrl--;
+      document.writeln("<p>" + ctrl + "</p>");
+      ctrl++;
+      document.writeln("<p>" + ctrl + "</p>");
+      ctrl = -ctrl;
+      document.writeln("<p>" + ctrl + "</p>");
+
+      // operator logika
+      const nilaiUjian = 90;
+      const nilaiAbsensi = 90;
+      const lulusUjian = nilaiUjian > 75;
+      const lulusAbsensi = nilaiAbsensi > 75;
+      const lulus = lulusUjian && lulusAbsensi;
+      document.writeln(lulus);
+
+      // console method
+      console.debug("debug");
+      console.info("pagi dunia");
+      console.warn("ini peringatan!");
+      console.error("ada yang error!");
+
+      // string template
+      const name = "rafid hilmi";
+      const nameAwal = "rafid";
+      const nameAkhir = "hilmi";
+      const template = `name : ${nameAwal} ${nameAkhir}`;
+      console.log(template);
+
+      const nilai = 87;
+      const template2 = `name : ${name} , lulus : ${nilai > 75}`;
+      console.log(template2);
+
+      //mutiple string
+      const multiline = `nama saya rafid,
+            sekarang baik saja,
+            tetap tersenyum walau dunia tidak berpihak kepadamu:),
+            jangan rebahan melulu kapan suksesnya`;
+      document.writeln("<pre>");
+      document.writeln(multiline);
+      document.writeln("</pre>");
+
+      // konversi string & number
+      const value1 = parseInt("1");
+      const value2 = 1;
+      const sum = value1 + value2;
+      document.writeln(`<p>${sum}</p>`);
+
+      document.writeln(`<p>${parseInt("1.9")}</p>`);
+      document.writeln(`<p>${parseFloat("1.1")}</p>`);
+      document.writeln(`<p>${Number("1.1")}</p>`);
+
+      const a = 1;
+      const b = 1;
+      const total = a.toString() + b.toString();
+      document.writeln(`<p>${total}</p>`);
+
+      // NaN
+      document.writeln(`<p>${parseInt("salah")}</p>`); //NaN
+      document.writeln(`<p>${parseFloat("1.1text")}</p>`); //1.1
+
+      //number() tidak mentolelir kesalahan pada data
+      document.writeln(`<p>${Number("1.1lups")}</p>`); //NaN
+      document.writeln(`<p>${Number("1x")}</p>`); //NaN
+      document.writeln(`<p>${Number("bukan number")}</p>`); //NaN
+
+      //operasi pada NaN
+      const nilai1 = Number("salah");
+      const nilai2 = 100;
+      const jumlahNilai = nilai1 + nilai2;
+      document.writeln(`<p>${jumlahNilai}</p>`);
+      document.writeln(`<p>${isNaN(nilai1)}</p>`);
+      document.writeln(`<p>${isNaN(nilai2)}</p>`);
+
+      // Array
+      let arrayKosong = [];
+      let arrayNama = [
+        "ahmad",
+        "topik",
+        "arief",
+        "kurniadi",
+        "santoso",
+        "budi",
+      ];
+      document.writeln(`<p>${arrayNama}</p>`);
+
+      let names = [];
+      names.push("joko");
+      names.push("zukardi", "sandi");
+      names.push("kurniawan", "habib", "jumadil");
+      console.log(names);
+      console.info(names[3]);
+
+      //operasi di array
+      names[0] = "rudi";
+      names[1] = "luffy";
+      names[2] = "maldini";
+      console.table(names);
+      delete names[1];
+      console.table(names);
+      names.push("lagi");
+      names[1] = "ada lagi";
+      names.push(1, 2, 3, 4, 5);
+      names.push(["nakama", "joyboy", "im-sama"]);
+
+      // data object
+      const person = {
+        "namo lengkap": "rafid hilmi",
+        tingga: "bandaliko",
+        umua: 17,
+      };
+      //ubah data / atribute
+      /*    person["namo"] = "rafid hilmi";
+            person["tingga"] = "bandaliko";
+            person["umua"] = 17;*/
+      console.info(person);
+      //delete person["umua"];
+      console.log(`nama : ${person["namo lengkap"]}`);
+      console.log(`alamat : ${person.tingga}`);
+      console.log(`umur : ${person.umua}`);
+
+      // if else expression
+      const examValue = 80;
+      if (examValue > 80 && examValue < 90) {
+        console.log(`kamu lulus dengan nilai ${examValue}`);
+      } else if (examValue < 81) {
+        console.log(`kamu tidak lulus dengan nilai ${examValue}`);
+      } else {
+        console.log(`kamu mendapatkan nilai ${examValue} sempurna`);
+      }
+
+      // alert prompt confirm
+      const masuk = confirm("anda yakin masuk");
+      if (masuk) {
+        const lu = prompt("siapa nama anda");
+        alert(`halo ${lu}`);
+      } else {
+        alert(`bye bye`);
+      }
+
+      //undefined
+      let wow;
+      if (wow === undefined) {
+        console.info("UNDEFINED");
+      } else {
+        console.info("DEFINED");
+      }
+      const nakama = ["sanji", "zoro"];
+      delete nakama[0];
+      if (nakama[0] === undefined) {
+        console.log("array undefined");
+      } else {
+        console.log("array defined");
+      }
+
+      const human = {};
+      if (human.nm === undefined) {
+        console.log("object undefined");
+      } else {
+        console.log("object defined");
+      }
+
+      //tipe null
+      let namaPertama = null;
+      if (namaPertama === undefined) {
+        console.log("data UNDEFINED");
+      } else if (namaPertama === null) {
+        console.log("data NULL");
+      } else {
+        console.log(namaPertama);
+      }
+
+      // switch statement
+      const val = "";
+      switch (val) {
+        case "A":
+          console.log("Anda Lulus Dengan Nilai Yang Memuaskan");
+          break;
+        case "B":
+          console.log("wah kamu lulus itu sempurna");
+          break;
+        case "C":
+          console.log("FYI:tetap semangat dan jangan menyerah");
+          break;
+        case "D":
+          console.log("mungki anda tidam cocok dibidang ini");
+          break;
+        default:
+          console.log("anda belum ikut ujian tulis!");
+      }
+      //typeof
+      let data = 10;
+      let typeDate = typeof data;
+      document.writeln(`<p>${typeDate}</p>`);
+
+      //operator in
+      const lagu = {
+        firstName: "razor",
+        lastName: "kun",
+      };
+      if ("middleName" in lagu) {
+        alert(`heloo ${lagu.firstName}`);
+      } else {
+        alert("woiii");
+      }
+
+      const student = {
+        firstName: "Monkey",
+        middleName: undefined,
+        lastName: "luffy",
+      };
+      if ("middleName" in student) {
+        console.log(`haloo ${student.middleName}`);
+      } else {
+        console.log(`haloo student`);
+      }
+
+      const only = [null, "hilmi", null];
+      const awal = 1 in only;
+      document.writeln(`<p>${awal}</p>`);
+
+      //operator ternary
+      const angka = 60;
+      let ucapan;
+      if (angka >= 75) {
+        ucapan = "selamat anda lulus";
+      } else {
+        ucapan = "maaf anda belum lulus";
+      }
+      console.log(ucapan);
+      ucapan = angka >= 75 ? "selamat anda lulus" : "anda gagal tahun ini";
+      console.log(ucapan);
+
+      //nullish coalescing operator
+      let parameter = null;
+      let dat = parameter;
+      if (dat === undefined || dat === null) {
+        dat = "nilai default";
+      }
+      console.log(dat);
+      dat = parameter ?? "nilai default";
+      console.log(dat);
+
+      //optional chaining
+      const setting = {
+        address: {
+          country: "indonesia",
+        },
+      };
+      let country = setting?.address?.country;
+      /*      if(setting.address !== undefined && setting.address !== null) {
+              country = setting.address.country;
+              }*/
+
+      console.log(country);
+
+      //falsy & truty
+      let D = null;
+      if (D) {
+        console.log("TRUE");
+      } else {
+        console.log("FALSE");
+      }
+
+      //operator logika di non boolean
+      console.info("hello" || "");
+      console.info("" || []);
+      console.info("0" || "nol");
+      console.info(0 || "NOL");
+      console.info(null || "Null");
+      console.info(undefined || "undefined");
+      console.info(0 || false);
+      const seseorang = {
+        firstNama: "",
+        lastNama: "hilmi",
+      };
+      const esc = seseorang.firstNama || seseorang.lastNama;
+      console.log(esc);
+
+      console.info("hello" && "");
+      console.info("" && []);
+      console.info("0" && "nol");
+      console.info(0 && "NOL");
+      console.info(null && "Null");
+      console.info(undefined && "undefined");
+      console.info(0 && false);
+
+      //for loop
+      for (let counter = 1; counter <= 10; counter++) {
+        document.writeln(`<p>perulangan ${counter}x</p>`);
+      }
+
+      //while loop
+      let counter2 = 1;
+      while (counter2 <= 10) {
+        document.writeln(`<p>hari ke ${counter2}</p>`);
+        counter2++;
+      }
+
+      // do while loop
+      let counter3 = 100;
+      do {
+        document.writeln(`<p>bulan ke ${counter3}</p>`);
+        counter3++;
+      } while (counter3 <= 10);
+
+      // break & continue
+      let count = 1;
+      while (true) {
+        document.writeln(`<p>${count} jam kemudian...</p>`);
+        count++;
+        if (count > 24) {
+          break;
+        }
+      }
+      for (let i = 1; i <= 10; i++) {
+        if (i % 2 === 0) {
+          continue;
+        }
+        console.log(`${i} adalah bilangan ganjil`);
+      }
+
+      //label
+      loopik: for (let ik = 0; ik < 10; ik++) {
+        loopjk: for (let jk = 0; jk < 100; jk++) {
+          if (jk > 10) continue loopik;
+          console.log(`${ik} - ${jk}`);
+        }
+      }
+
+      //for in
+      const hito = {
+        first: "rafid",
+        mid: ".D",
+        last: "hilmi",
+      };
+      for (const property in hito) {
+        document.writeln(`<p>${property} : ${hito[property]}</p>`);
+      }
+
+      const rusdi = ["luffy", "zoro", "sanji", "jinbei"];
+      for (const index in rusdi) {
+        document.writeln(`<p>${index} : ${rusdi[index]}</p>`);
+      }
+
+      //for of
+      const will = ["luffy", "buggy", "teach", "shank"];
+      for (const name of will) {
+        document.writeln(`<p>${name}</p>`);
+      }
+      const op = "uzumaki naruto luffy goku";
+      for (const character of op) {
+        document.writeln(`<p>${character}</p>`);
+      }
+
+      // with statement
+      const any = {
+        namaAwal: "naruto",
+        namaTengah: "luffy",
+        namaAkhir: "goku",
+      };
+      const namaAwal = "ijai";
+      const namaAkhir = "topik";
+      with (any) {
+        console.log(namaAwal);
+        console.log(namaTengah);
+        console.log(namaAkhir);
+      }
+
+      // function
+      function sayKaizoKoNi(nama, jurusan, alamat) {
+        document.writeln(
+          `<p>halo nama saya ${nama}, saya tinggal di ${alamat}, dan jurusan saya ${jurusan}</p>`
+        );
+      }
+      sayKaizoKoNi("rafid hilmi", "informatika", "bandaliko");
+      sayKaizoKoNi("yazid abdillah", "keperawatan", "parak gadang");
+
+      // function return value
+      function sayHello(firstName, lastName) {
+        const ras = `hello ${firstName} ${lastName}`;
+        return ras;
+      }
+      const turn = sayHello("rafid", "hilmi");
+      document.writeln(`<p>${turn}</p>`);
+
+      function getFinalValue(value) {
+        if (value > 90) {
+          return "A";
+        } else if (value > 80) {
+          return "B";
+        } else if (value > 70) {
+          return "C";
+        } else if (value > 60) {
+          return "D";
+        } else {
+          return "E";
+        }
+      }
+      const west = getFinalValue(78);
+      document.writeln(`<p>nilai kamu ${west}</p>`);
+
+      function isContains(array, searchValue) {
+        for (const element of array) {
+          console.info(`iterasi element ${element}`);
+          if (element === searchValue) {
+            return true;
+          }
+        }
+        return false;
+      }
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const search = 76;
+      const bread = isContains(array, search);
+      document.writeln(`<p>${bread}</p>`);
+
+      //function optional parameter
+      function jkl(firstName, middleName, lastName) {
+        console.log(firstName);
+        console.log(middleName);
+        console.log(lastName);
+      }
+      jkl("rafid", "ijai", "akbar", "yazid");
+      // function default parameter
+      function qwerty(name, gender = "UNKNOWN") {
+        console.log(name);
+        console.log(gender);
+      }
+      qwerty("one", "man");
+      qwerty("razor");
+      qwerty("joko", undefined);
+      qwerty("joko", null);
+
+      // function rest parameter
+      function amount(name, ...data) {
+        let full = 0;
+        for (const item of data) {
+          full += item;
+        }
+        console.info(`total ${name} is ${full}`);
+      }
+      amount("orange", 10, 20, 30, 40, 50, 60);
+      amount("apple", 5, 15, 25, 35, 45, 55);
+      const values = [10, 10, 10, 10, 10];
+      amount("test", ...values);
+
+      function oldSum() {
+        let total = 0;
+        for (const argument of arguments) {
+          total += argument;
+        }
+        console.info(`total is ${total}`);
+      }
+      oldSum(1, 23, 4, 5, 6);
+
+      // function sebagai value
+      function gylt(name) {
+        console.log(
+          `ini adalah ${name}, raja mexico elmatadore salvador teqila elkotole`
+        );
+      }
+      let honey = gylt;
+      honey("smiles");
+      gylt("emily");
+
+      function giveMeName(callback) {
+        callback("rafid"); //gylt("rafid")
+      }
+      giveMeName(gylt);
+      giveMeName(honey); //giveMeName(gylt)
+
+      //anonymous function
+      let ray = function (baka) {
+        console.log(`my world is ${baka}`);
+      };
+      ray("rawrrrrr");
+
+      function enma(back) {
+        back("zoro");
+      }
+      enma(ray);
+      enma(function (name) {
+        document.writeln(`<p>hi ${name}</p>`);
+      });
+      enma(function (name) {
+        document.writeln(`<p>hi ${name}</p>`);
+      });
+      enma(function (name) {
+        document.writeln(`<p>hi ${name}</p>`);
+      });
+      enma(function (name) {
+        document.writeln(`<p>hi ${name}</p>`);
+      });
+
+      //function dalam function
+      function outer() {
+        function inner() {
+          console.info("inner");
+        }
+        inner();
+        inner();
+      }
+      outer();
+      // inner(); ERROR
+      //scope
+      //global scope
+      let global = 0;
+
+      function hitMe() {
+        //local scope hitMe
+        global++;
+      }
+      function container() {
+        //local scope container
+      }
+      hitMe();
+      hitMe();
+      console.log(global);
+
+      //local scope
+      function early() {
+        //local scope first
+        let firstVariable = "first";
+      }
+      function over() {
+        //local scope second
+        let secondVariable = "second";
+        // console.info(firstVariable); ERROR
+      }
+      early();
+      over();
+
+      //global scope
+      // console.info(firstVariable); //ERROR
+      // console.info(secondVariable); //ERROR
+
+      //recursive function
+      //tanpa
+      function factorial(value) {
+        let result = 1;
+        for (let oi = 1; oi <= value; oi++) {
+          result *= oi;
+        }
+        return result;
+      }
+      console.log(factorial(5));
+      console.log(1 * 2 * 3 * 4 * 5);
+
+      // tidak tanpa
+      function recursiveFactorial(value) {
+        if (value === 1) {
+          return 1;
+        } else {
+          return value * recursiveFactorial(value - 1);
+        }
+      }
+      console.log(recursiveFactorial(10));
+
+      recursiveFactorial(5);
+      // 5 * recursiveFactorial(4)
+      // 5 * 4 * recursiveFactorial(3)
+      // 5 * 4 * 3 * recursiveFactorial(2)
+      // 5 * 4 * 3 * 2 * recursiveFactorial(1)
+      // 5 * 4 * 3 * 2 * 1
+
+      //function generator
+      function* generator() {
+        yield "rafid";
+        yield "hilmi";
+      }
+
+      const kucing = generator();
+      for (const name of kucing) {
+        console.log(name);
+      }
+
+      //LAZY
+      function* buatGanjil(value) {
+        for (let z = 1; z <= value; z++) {
+          if (z % 2 === 1) {
+            console.log(`yield ${z}`);
+            yield z;
+          }
+        }
+      }
+
+      //EAGER
+      function buatGanjilArray(value) {
+        const pengembalian = [];
+        for (let z = 1; z <= value; z++) {
+          if (z % 2 === 1) {
+            console.log(`yield ${z}`);
+            pengembalian.push(z);
+          }
+        }
+        return pengembalian;
+      }
+      const numbers = buatGanjil(100);
+      /*      for(const number of numbers){
+              console.log(number);
+            }*/
+      console.info(numbers.next().value);
+      console.info(numbers.next().value);
+      console.info(numbers.next().value);
+
+      //arrow function
+      let king = (name) => {
+        const say = `hello nama saya ${name}`;
+        console.log(say);
+      };
+      king("rafid");
+      //tanpa block
+      let jack = (name) => console.log(`hello nama saya ${name}`);
+      jack("jack");
+
+      const summon = (awalan, akhiran) => awalan + akhiran;
+      console.log(summon(6, 8));
+
+      //arrow function sebagai parameter
+
+      function giveMe(callback) {
+        callback("eko");
+      }
+
+      //anonymous function
+      /*      giveMe(function(name){
+              console.log(`my name is ${name}`)
+            })*/
+
+      //arrow function
+      giveMe((name) => console.info(`watashi wa ${name}`));
+
+      //closure
+      function createAdder(value) {
+        const owner = "razor";
+        function add(param) {
+          console.info(owner);
+          return value + param;
+        }
+        return add;
+      }
+      const addTwo = createAdder(2);
+      /*      function addTwo(param){
+              console.log("razor");
+              return 2 + param;
+            }*/
+      console.info(addTwo(20));
+      console.info(addTwo(30));
+      const addTen = createAdder(10);
+      /*      function addTen(param){
+              console.log("razor");
+              return 10 + param;
+            }*/
+      console.info(addTen(32));
+      console.info(addTen(63));
+
+      //object method
+
+      /*      const method = {
+              name: "rafid",
+              callMe: function (name) {
+                console.log(`${name} welcome to kikiman`);
+              },
+            };*/
+
+      const method = {
+        name: "joyboy",
+      };
+
+      method.callMe = function (name) {
+        console.log(`aku lh sang ${name}`);
+      };
+
+      method.callMe("udin");
+
+      // kata kunci this
+      console.log(this);
+
+      function sample() {
+        console.log(this);
+        function unner() {
+          console.log(this);
+        }
+        unner();
+      }
+
+      const solo = {
+        name: "ryuma",
+        hallo: function (value) {
+          console.log(`hello ${value} my name is ${this.name}`);
+        },
+      };
+      solo.hallo("roronoa zoro");
+
+      //arrow function di object
+      const arrow = {
+        name: "vegapunk",
+        island: (name) => {
+          console.info(this);
+          console.log(`wah ${name} power kamu belum cukup`);
+        },
+      };
+      arrow.island("stussy");
+
+      //getter dan setter
+      const scp = {
+        firstName: "rafid",
+        lastName: "hilmi",
+        get fullName() {
+          return `${this.firstName} ${this.lastName}`;
+        },
+        set fullName(value) {
+          const array = value.split(" ");
+          this.firstName = array[0];
+          this.lastName = array[1];
+        },
+      };
+      scp.fullName = "roxxy daisy";
+      console.table(scp);
+
+      scp.fullName = "star falley";
+      console.table(scp);
+
+      scp.fullName = "rafid hilmi";
+      console.table(scp);
+
+      //masalah variable var
+      //menggunakan let
+      let q = 20;
+      for (let q = 0; q < 10; q++) {
+        console.log(`local ${q}`);
+      }
+      console.log(`global ${q}`);
+
+      //menggunakan var
+      var r = 20;
+      for (var r = 0; r < 10; r++) {
+        console.log(`local ${r}`);
+      }
+      console.log(`global ${r}`);
+
+      //destructuring
+      //array
+      //tanpa
+      const crossGuild = [
+        "buggy",
+        "mihawk",
+        "crocodile",
+        "alvida",
+        "mohji",
+        "cabaji",
+      ];
+      /*const capten = crossGuild[0];
+      const komandan1 = crossGuild[1];
+      const komandan2 = crossGuild[2];*/
+
+      //tidak tanpa
+      const [capten, komandan1, komandan2, ...others] = crossGuild;
+      console.info(capten);
+      console.info(komandan1);
+      console.info(komandan2);
+      console.info(others);
+      //object
+      const shicibukai = {
+        firstName: "rafid",
+        lastName: "hilmi",
+        address: {
+          street: "jl. km 13 singkarak",
+          city: "solok",
+          countries: "indonesia",
+        },
+        hobbie: "anime",
+        instagram: "rfd_hlmi08",
+      };
+      /*      const {firstName, lastName, address, ...lain} = shicibukai;
+      console.log(firstName);
+      console.log(lastName);
+      console.log(address);
+      console.log(lain);*/
+      let {
+        firstName,
+        lastName,
+        address: { street, city, countries },
+        ...lain
+      } = shicibukai;
+      console.log(firstName);
+      console.log(lastName);
+      console.log(city);
+      console.log(street);
+      console.log(countries);
+      console.log(lain);
+
+      //destructuring parameter
+      function pm({ nama1, nama2, nama3 }) {
+        console.log(nama1);
+        console.log(nama2);
+        console.log(nama3);
+      }
+      const pers = {
+        nama1: "monkey",
+        nama2: "D",
+        nama3: "luffy",
+      };
+      pm(pers);
+
+      //array
+      function somo([angka1, angka2]) {
+        return angka1 + angka2;
+      }
+      console.log(somo([100, 200]));
+      console.log(somo([500, 400]));
+
+      //default value destructuring
+      const fruit = ["naga", "jambu"];
+      const [buah1, buah2, buah3 = "rambutan"] = fruit;
+      console.log(buah1);
+      console.log(buah2);
+      console.log(buah3);
+
+      //destructuring variable lain
+      let go = {
+        namaSatu: "rusdy",
+        namaTiga: "trafalgar",
+      };
+      let {
+        namaSatu: depan,
+        namaDua: tengah = "anton",
+        namaTiga: belakang,
+      } = go;
+      console.log(depan);
+      console.log(tengah);
+      console.log(belakang);
+
+      //strict mode
+      /*function useStrictMode(){
+        'use strict'
+        const lah = {
+          namaSaja = "nika"
+        };
+        error
+        with (lah) {
+        console.info(namaSaja);
+        }
+      };
+      useStrictMode();*/
+
+      //debugger
+      function createFullGear(gear1, gear2, gear3) {
+        debugger;
+        const fullGear = `${gear1} ${gear2} ${gear2}`;
+        return fullGear;
+      }
+      const gear = createFullGear("human", "speed", "bigger");
+      console.log(gear);
+      function monty(...nooo){
+        let tp = 0;
+        for(const number of nooo) {
+          tp += number;
+        }
+        return tp;
+      }
+      console.log(monty(1,2,3,4,5,6));
+    </script>
+  </body>
+</html>

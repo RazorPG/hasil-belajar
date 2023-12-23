@@ -1,0 +1,18 @@
+h1 {
+  font: oblique small-caps normal 50px verdana,arial;
+  color:royalblue;
+  text-align: center;
+  text-decoration: line-through;
+}
+
+p {
+  font-family:verdana;
+  font-size: 15px;
+  line-height: 15px;
+  color:rgb(11,225,3)
+           text-align: center;
+  text-indent: 50px;
+  text-transform: capitalize;
+  letter-spacing: 10px;
+  word-spacing: 2px;
+}

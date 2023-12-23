@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>pola lingkaran</title>
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      function lingkaran(pola) {
+        let hasil = "";
+        for (let i = 1; i <= pola + 1; i++) {
+          hasil += '\b'
+          for (let j = 1; j <= pola + 2; j++) {
+            hasil += '\b';
+            hasil += "*";
+          }
+          hasil += "\n";
+        }
+        console.log(hasil);
+      }
+      lingkaran(15);
+      lingkaran(5);
+    </script>
+  </body>
+</html>

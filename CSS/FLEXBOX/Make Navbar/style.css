@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family:'Arvo', Serif;
+  overflow-x: hidden;
+  
+}
+
+/* navbar */
+nav {
+  display: flex;
+  background-color: #6df066;
+  justify-content: space-around;
+  height: 50px;
+  color:#085403 ;
+  align-items: center;
+}
+nav .logo {
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 3px;
+}
+nav ul {
+  display: flex;
+  list-style:none ;
+  width: 40%;
+  justify-content: space-between;
+}
+nav ul li a {
+  color: #08820373;
+  text-decoration: none;
+  font-size: .8em;
+}
+
+nav ul li a:hover {
+  color:#033b0073;
+}
+
+/* hamburger menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+.menu-toggle input {
+  position: absolute;
+  width:40px ;
+  height: 28px;
+  left: -6px;
+  top: -3px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: #08820373;
+  border-radius:3px;
+  transition: .5s;
+}
+
+/* hamburger animation menu */
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+.menu-toggle input:checked ~ span:nth-child(2) {
+  background-color: white;
+  transform: rotate(45deg) translate(-1px,1px);
+}
+.menu-toggle input:checked ~ span:nth-child(4) {
+  background-color: white;
+  transform: rotate(-45deg) translate(-2px,0);
+}
+.menu-toggle input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+
+/* responsif */
+
+/* ukuran tablet */
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 50%;
+  }
+}
+/* ukuran mobile */
+@media screen and (max-width: 576px) {
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #6df066;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: -1;
+    width: 80%;
+    transform: translateX(100%);
+    transition: 1s;
+    
+  }
+  nav ul.slide {
+    transform: translateX(0%);
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  body {
+    max-width: 360px;
+  }
+}
