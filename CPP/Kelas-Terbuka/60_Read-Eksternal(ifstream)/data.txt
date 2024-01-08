@@ -1,0 +1,27 @@
+ini adalah sebuah data dari mahasiswa teknik informatika di unp painan.
+berikut adalah daftar mahasiswa BP 23.
+
+data
+No  Nama
+1   Adira Pratama
+2   Aisyah Amalia Pratiwi
+3   Asyaraihan Febsa Yuda
+4   Daffa Destio Waldy
+5   Diah Pita Loka
+6   Fajar Aulia Pratama
+7   Ilham Sanusi
+8   Indah Safitri
+9   Intan Sepriyelmi
+10  M.Zidan
+11  Muhammad Fauzan
+12  Muhammad Gilang Ramadhan
+13  Muhammad Huzaifi
+14  Muhammad Rifki Fadillah
+15  Rafi Geovazi
+16  Rafid Hilmi
+17  Rahmi Fah Riza
+18  Rangga Rizky Nugraha
+19  Riska Esa Putri
+20  Tiara Utari
+21  Wenni Ajijah Hasibuan
+22  Zikry Huda Hermawan
