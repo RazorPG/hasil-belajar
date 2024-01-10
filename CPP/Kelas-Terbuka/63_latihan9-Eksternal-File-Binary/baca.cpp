@@ -7,8 +7,8 @@ using namespace std;
 struct Mahasiswa
 {
     int NIM;
-    string nama;
-    string jurusan;
+    char nama[50];
+    char jurusan[50];
 };
 
 Mahasiswa ambilData(int &posisi, fstream &myFile)

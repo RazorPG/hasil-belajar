@@ -1,14 +1,14 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
 
 using namespace std;
 
 struct Mahasiswa
 {
     int NIM;
-    string nama;
-    string jurusan;
+    char nama[50];
+    char jurusan[50];
 };
 
 Mahasiswa ambilData(int posisi, fstream &myFile)
@@ -41,16 +41,16 @@ int main()
     Mahasiswa mahasiswa1, mahasiswa2, mahasiswa3, output;
 
     mahasiswa1.NIM = 23346016;
-    mahasiswa1.nama = "Rafid Hilmi";
-    mahasiswa1.jurusan = "Teknik Informatika";
+    strcpy(mahasiswa1.nama, "Rafid Hilmi");
+    strcpy(mahasiswa1.jurusan, "Teknik Informatika");
 
     mahasiswa2.NIM = 23346508;
-    mahasiswa2.nama = "Jumaidil Ramadhan";
-    mahasiswa2.jurusan = "Pendidikan Kimia";
+    strcpy(mahasiswa2.nama, "Jumaidil Ramadhan");
+    strcpy(mahasiswa2.jurusan, "Pendidikan Kimia");
 
     mahasiswa3.NIM = 23346703;
-    mahasiswa3.nama = "Bunga Mutiara Angel";
-    mahasiswa3.jurusan = "Keperawatan";
+    strcpy(mahasiswa3.nama, "Bunga Mutiara Angel");
+    strcpy(mahasiswa3.jurusan, "Keperawatan");
 
     menulisData(mahasiswa1, myFile);
     menulisData(mahasiswa2, myFile);
