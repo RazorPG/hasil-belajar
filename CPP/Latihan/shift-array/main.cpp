@@ -1,45 +1,119 @@
 #include <iostream>
-#include <unistd.h>
+#include <windows.h>
 #include <cstring>
+#include <iomanip>
 
 using namespace std;
 
 int main()
 {
     char text[100];
-    char blank;
-    int sum = 0;
     int length;
+    char arah;
 
+kembali:
+    system("cls");
+    fflush(stdin);
     cout << "masukkan sebuah kalimat : ";
-    cin.getline(text, 100);
+    if (!cin.getline(text, 100))
+    {
+        cin.clear();
+        cout << "tidak sesuai syarat!!" << endl;
+        Sleep(1);
+        goto kembali;
+    }
+
     length = strlen(text);
     char temp[length];
     for (int i = 0; i < length; i++)
     {
-        temp[i] = ' ';
+        if (i == 0 || i == length - 1)
+        {
+            temp[i] = '|';
+        }
+        else
+        {
+            temp[i] = ' ';
+        }
     }
-    while (true)
-    {
-        system("cls");
-        for (int i = 0; i < length; i++)
-        {
-            cout << temp[i];
-        }
-        blank = text[sum++];
-        temp[length - 1] = blank;
-        for (int i = 0; i < length - 1; i++)
-        {
-            temp[i] = temp[i + 1];
-        }
-        sum++;
-        if (sum == (length - 1))
-        {
-            sum = 0;
-        }
 
-        cout << endl;
-        sleep(1);
+// else if (length != 50)
+// {
+//     for (int i = length; i < 50; i++)
+//     {
+//         text[i] = ' ';
+//     }
+// }
+kembali2:
+    cout << "pilih arah[L/R] : ";
+    cin >> arah;
+    fflush(stdin);
+    if (arah == 'L' || arah == 'l')
+    {
+        while (true)
+        {
+            system("cls");
+            cout << setfill('=') << setw(length) << "=" << setfill(' ') << endl;
+
+            for (int i = 0; i < length; i++)
+            {
+                cout << temp[i];
+            }
+
+            for (int i = 1; i < length - 2; i++)
+            {
+                temp[i] = temp[i + 1];
+            }
+            temp[length - 2] = text[0];
+
+            for (int i = 0; i < length - 1; i++)
+            {
+                text[i] = text[i + 1];
+            }
+            text[length - 1] = temp[1];
+            cout << endl;
+            cout << setfill('=') << setw(length) << "=" << setfill(' ') << endl;
+
+            Sleep(100);
+        }
+    }
+    else if (arah == 'R' || arah == 'r')
+    {
+        while (true)
+        {
+            system("cls");
+            cout << setfill('=') << setw(length) << "=" << setfill(' ') << endl;
+
+            for (int i = 0; i < length; i++)
+            {
+                cout << temp[i];
+            }
+
+            for (int i = length - 2; i > 1; i--)
+            {
+                temp[i] = temp[i - 1];
+            }
+
+            temp[1] = text[length - 1];
+
+            for (int i = length - 1; i > 0; i--)
+            {
+                text[i] = text[i - 1];
+            }
+            text[0] = temp[length - 2];
+            cout << endl;
+            cout << setfill('=') << setw(length) << "=" << setfill(' ') << endl;
+
+            Sleep(100);
+        }
+    }
+    else
+    {
+        cin.clear();
+        cout << "tidak sesuai syarat!!" << endl;
+        Sleep(100);
+        system("cls");
+        goto kembali2;
     }
 
     cin.get();
