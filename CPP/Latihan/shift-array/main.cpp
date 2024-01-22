@@ -24,10 +24,10 @@ kembali:
     }
 
     length = strlen(text);
-    char temp[length];
-    for (int i = 0; i < length; i++)
+    char temp[50];
+    for (int i = 0; i < 50; i++)
     {
-        if (i == 0 || i == length - 1)
+        if (i == 0 || i == 50 - 1)
         {
             temp[i] = '|';
         }
@@ -37,13 +37,13 @@ kembali:
         }
     }
 
-// else if (length != 50)
-// {
-//     for (int i = length; i < 50; i++)
-//     {
-//         text[i] = ' ';
-//     }
-// }
+    if (length != 100)
+    {
+        for (int i = length; i < 100; i++)
+        {
+            text[i] = ' ';
+        }
+    }
 kembali2:
     cout << "pilih arah[L/R] : ";
     cin >> arah;
@@ -53,26 +53,26 @@ kembali2:
         while (true)
         {
             system("cls");
-            cout << setfill('=') << setw(length) << "=" << setfill(' ') << endl;
+            cout << setfill('=') << setw(50) << "=" << setfill(' ') << endl;
 
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < 50; i++)
             {
                 cout << temp[i];
             }
 
-            for (int i = 1; i < length - 2; i++)
+            for (int i = 1; i < 50 - 2; i++)
             {
                 temp[i] = temp[i + 1];
             }
-            temp[length - 2] = text[0];
+            temp[50 - 2] = text[0];
 
-            for (int i = 0; i < length - 1; i++)
+            for (int i = 0; i < 100 - 1; i++)
             {
                 text[i] = text[i + 1];
             }
-            text[length - 1] = temp[1];
+            text[100 - 1] = temp[1];
             cout << endl;
-            cout << setfill('=') << setw(length) << "=" << setfill(' ') << endl;
+            cout << setfill('=') << setw(50) << "=" << setfill(' ') << endl;
 
             Sleep(100);
         }
