@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <gdiplusgraphics.h>
 
 #define maxHour 24
 #define maxMinute 60
@@ -16,6 +17,11 @@ using namespace std;
 
 int main()
 {
+    // Kode untuk menggambar lingkaran dengan GDI+
+    Graphics graphics(hdc); // hdc adalah handle ke konteks gambar (misalnya, dari fungsi Paint)
+
+    graphics.FillEllipse(&SolidBrush(Color(255, 0, 0)), 10, 10, 100, 100);
+
 kembali:
     system("cls");
     cout << "pilih [1] untuk jam digital" << endl;
