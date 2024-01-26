@@ -1,96 +1,114 @@
 #include "raylib.h"
 #include "raymath.h"
 
-const int screenWidth = 800;
-const int screenHeight = 450;
+#define screenWidth 1280
+#define screenHeight 720
+#define scarfySpeed 5
+#define gravity 1
+#define jumpUpFrame 3
+#define jumpDownFrame 4
 
-const int scarfySpeed = 5;
-const int gravity = 1;
-const int groundYPos = 3 * screenHeight / 4;
+typedef struct
+{
+    Texture2D skin;
+    Rectangle frameRec;
+    Vector2 playerPosition;
+    Vector2 playerVelocity;
+} Player;
+Player scarfy;
 
-const int jumpUpFrame = 3;
-const int jumpDownFrame = 4;
+typedef struct
+{
+    Texture2D skin;
+    Rectangle frame;
+    Vector2 ObstaclePosision;
+} Obstacle;
+Obstacle platform1, ground;
 
-bool isScarfyOnGround(Texture2D *scarfy, Vector2 *scarfyPosition);
-//------------------------------------------------------------------------------------
-// Program main entry point
-//------------------------------------------------------------------------------------
+bool isScarfyOnGround(Player *scarfy, Obstacle *ground);
+bool isScarfyOnObstacle(Player *scarfy, Obstacle *platform1);
+
 int main()
 {
     // Initialization
     //--------------------------------------------------------------------------------------
 
-    InitWindow(screenWidth, screenHeight, "player texture");
+    InitWindow(screenWidth, screenHeight, "Birjon Adventure");
     InitAudioDevice();
-    Texture2D scarfy = LoadTexture("scarfy.png");
-    unsigned numFrame = 6;
-    float frameWidth = scarfy.width / 6;
-    Rectangle frameRec = {0.0f, 0.0f, (float)frameWidth, (float)scarfy.height};
-    Vector2 scarfyPosition = {0.0f, screenHeight - scarfy.height};
-    Vector2 scarfyVelocity = {0.0f, 0.0f};
+
+    Texture2D aset = LoadTexture("aset-game.png");
+
+    scarfy.skin = LoadTexture("scarfy.png");
+    scarfy.frameRec = (Rectangle){0.0f, 0.0f, (float)scarfy.skin.width / 6, (float)scarfy.skin.height};
+    scarfy.playerPosition = (Vector2){0.7 * screenWidth / 2, screenHeight - scarfy.skin.height};
+    scarfy.playerVelocity = (Vector2){0.0f, 0.0f};
+
+    platform1.skin = aset;
+    platform1.frame = (Rectangle){0.0f, 700.0f, (float)platform1.skin.width * 0.3, (float)platform1.skin.height / 6};
+    platform1.ObstaclePosision = (Vector2){0, screenHeight * 0.7f};
+
+    ground.skin = aset;
+    ground.frame = (Rectangle){0.0f, 655.0f, (float)platform1.skin.width * 0.9, (float)platform1.skin.height / 4};
+    ground.ObstaclePosision = (Vector2){-35.0f, 3.6 * screenHeight / 4};
 
     Sound footStepSound = LoadSound("Single-footstep-in-grass-A-www.fesliyanstudios.com.mp3");
     Sound landingSound = LoadSound("Single-footstep-in-grass-B-www.fesliyanstudios.com.mp3");
 
+    unsigned numFrame = 6;
     unsigned frameDelay = 5;
     unsigned frameDelayConter = 0;
     unsigned frameIndex = 0;
 
-    SetTargetFPS(60); // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
+    SetTargetFPS(60);
 
     // Main game loop
-    while (!WindowShouldClose()) // Detect window close button or ESC key
+    while (!WindowShouldClose())
     {
 
-        // Update
-        //
         // logika move karakter
-        if (isScarfyOnGround(&scarfy, &scarfyPosition))
+        if (isScarfyOnGround(&scarfy, &ground))
         {
-
-            if (IsKeyDown(KEY_SPACE))
+            if (IsKeyPressed(KEY_SPACE))
             {
-                scarfyVelocity.y = -3 * scarfySpeed;
+                scarfy.playerVelocity.y = -3.5 * scarfySpeed;
             }
             if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D))
             {
-                scarfyVelocity.x = scarfySpeed;
-                if (frameRec.width < 0)
+                scarfy.playerVelocity.x = scarfySpeed;
+                if (scarfy.frameRec.width < 0)
                 {
-                    frameRec.width = -frameRec.width;
+                    scarfy.frameRec.width = -scarfy.frameRec.width;
                 }
             }
             else if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))
             {
-                scarfyVelocity.x = -scarfySpeed;
-                if (frameRec.width > 0)
+                scarfy.playerVelocity.x = -scarfySpeed;
+                if (scarfy.frameRec.width > 0)
                 {
-                    frameRec.width = -frameRec.width;
+                    scarfy.frameRec.width = -scarfy.frameRec.width;
                 }
             }
             else
             {
-                scarfyVelocity.x = 0;
+                scarfy.playerVelocity.x = 0;
             }
         }
         // ngecek apakah karakter bergerak atau tidaknya
-        bool scarfyMoving = scarfyVelocity.x != 0.0f || scarfyVelocity.y != 0.0f;
+        bool scarfyMoving = scarfy.playerVelocity.x != 0.0f || scarfy.playerVelocity.y != 0.0f;
 
         // jika bergerak maka nilai posisi x karakter berubah
-
-        scarfyPosition = Vector2Add(scarfyPosition, scarfyVelocity);
-        bool scarfyIsOnGround = isScarfyOnGround(&scarfy, &scarfyPosition);
+        scarfy.playerPosition = Vector2Add(scarfy.playerPosition, scarfy.playerVelocity);
+        bool scarfyIsOnGround = isScarfyOnGround(&scarfy, &ground);
 
         if (scarfyIsOnGround)
         {
-            scarfyVelocity.y = 0;
-            scarfyPosition.y = groundYPos - scarfy.height;
+            scarfy.playerVelocity.y = 0;
+            scarfy.playerPosition.y = ground.ObstaclePosision.y - scarfy.skin.height;
         }
         else
         {
             PlaySound(landingSound);
-            scarfyVelocity.y += gravity;
+            scarfy.playerVelocity.y += gravity;
         }
 
         // membuat delay karakter
@@ -112,7 +130,7 @@ int main()
                 }
                 else
                 {
-                    if (scarfyVelocity.y < 0)
+                    if (scarfy.playerVelocity.y < 0)
                     {
                         frameIndex = jumpUpFrame;
                     }
@@ -121,34 +139,44 @@ int main()
                         frameIndex = jumpDownFrame;
                     }
                 }
-                frameRec.x = (float)frameWidth * frameIndex;
+                scarfy.frameRec.x = (float)scarfy.skin.width / 6 * frameIndex;
             }
         }
 
-        // Draw
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
         ClearBackground(RAYWHITE);
-
-        DrawTextureRec(scarfy, frameRec, scarfyPosition, WHITE);
+        DrawTextureRec(ground.skin, ground.frame, ground.ObstaclePosision, WHITE);
+        DrawTextureRec(platform1.skin, platform1.frame, platform1.ObstaclePosision, WHITE);
+        DrawTextureRec(scarfy.skin, scarfy.frameRec, scarfy.playerPosition, WHITE);
 
         EndDrawing();
-        //----------------------------------------------------------------------------------
     }
-
-    // De-Initialization
-    //--------------------------------------------------------------------------------------
     CloseAudioDevice();
-    CloseWindow(); // Close window and OpenGL context
-    //--------------------------------------------------------------------------------------
+    CloseWindow();
 
     return 0;
 }
 
-bool isScarfyOnGround(Texture2D *scarfy, Vector2 *scarfyPosition)
+bool isScarfyOnGround(Player *scarfy, Obstacle *ground)
 {
-    if (scarfyPosition->y + scarfy->height >= groundYPos)
+    if (scarfy->playerPosition.y + scarfy->skin.height >= ground->ObstaclePosision.y)
+    {
+        if (scarfy->playerPosition.x <= ground->ObstaclePosision.x + ground->frame.width)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    return 0;
+}
+
+bool isScarfyOnObstacle(Player *scarfy, Obstacle *platform1)
+{
+    if (scarfy->playerPosition.y + scarfy->skin.height >= platform1->ObstaclePosision.y)
     {
         return true;
     }
