@@ -1,7 +1,8 @@
 #include "raylib.h"
-#include <unistd.h>
 
-using namespace std;
+#define gravity 10
+#define speed 5
+#define jump 5
 
 int main()
 {
@@ -12,14 +13,14 @@ int main()
 
     // Inisialisasi karakter pemain
     Rectangle player = {0, screenHeight - 50.0f, 50.0f, 50.0f};
-    Rectangle obstacle = {300, 500, 100, 100};
+    Rectangle obstacle = {300, 500, 200, 100};
 
     // const char *textToDisplay = "GAME OVER!!";
     const char *textTest = "GameDev razor";
     Color playerColor = BLUE;
     Color obstacleColor = RED;
     Color borderColor = DARKGRAY;
-    float gravity = 10.0f;
+    float jumpHeight = 200.f;
     // float gameOverTimer = 5.0f;
     // bool gameover = false;
     bool spaceTurn = false;
@@ -28,8 +29,7 @@ int main()
 
     while (!WindowShouldClose())
     {
-        // Logika permainan
-
+        // border kiri kanan game
         if (player.x < 0)
         {
             player.x = 0;
@@ -38,26 +38,22 @@ int main()
         {
             player.x = 750;
         }
-
-        // if (player.x + 50 >= obstacle.x)
-        // {
-        //     gameover = true;
-        // }
-
+        // border agar player tidak menembus ke bawah tanah
         if (player.y >= screenHeight - player.height)
         {
             player.y = screenHeight - player.height;
         }
 
+        // tombol maju mundur dan melompat
         if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))
         {
-            player.x -= 10.0f;
+            player.x -= 5.0f;
         }
         else if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT))
         {
-            player.x += 10.0f;
+            player.x += 5.0f;
         }
-        if (player.y == screenHeight - 50.0f)
+        if (player.y <= screenHeight)
         {
             if ((IsKeyDown(KEY_SPACE)))
             {
@@ -70,28 +66,27 @@ int main()
         {
             if (player.x + player.width > obstacle.x && player.x < obstacle.x)
             {
-                // Collision from the left side
+                // ada border di sebelam kiri obstacle
                 player.x = obstacle.x - player.width;
             }
             else if (player.x < obstacle.x + obstacle.width && player.x + player.width > obstacle.x + obstacle.width)
             {
-                // Collision from the right side
+                // ada border di sebelah kanan obstacle
                 player.x = obstacle.x + obstacle.width;
             }
 
-            if (player.y + player.height > obstacle.y && player.y < obstacle.y)
+            else if (player.y + player.height > obstacle.y && player.y < obstacle.y)
             {
-                // Collision from the top side
-                player.y = obstacle.y - player.height;
-            }
-            else if (player.y < obstacle.y + obstacle.height && player.y + player.height > obstacle.y + obstacle.height)
-            {
-                // Collision from the bottom side
-                player.y = obstacle.y + obstacle.height;
+                if ((IsKeyDown(KEY_SPACE)))
+                {
+                    spaceTurn = true;
+                }
+                // ada border di sebelah atas obstacle
+                player.y = obstacle.y - player.width;
             }
         }
 
-        if (player.y > screenHeight - 200 && spaceTurn == true)
+        if (player.y > screenHeight - jumpHeight && spaceTurn == true)
         {
             player.y -= gravity;
         }
@@ -107,21 +102,9 @@ int main()
         // Menggambar karakter pemain
         DrawRectangleRec(player, playerColor);
         DrawRectangleRec(obstacle, obstacleColor);
-        DrawRectangleLinesEx(obstacle, 2, borderColor);
+        DrawRectangleLinesEx(obstacle, 1, borderColor);
+        DrawRectangleLinesEx(player, 1, BLACK);
 
-        // if (gameover)
-        // {
-        //     // Hitung lebar teks
-        //     float textWidth = MeasureText(textToDisplay, 50);
-
-        //     // Gambar teks "GAME OVER!!" di tengah layar
-        //     DrawText(textToDisplay, screenWidth / 2 - textWidth / 2, screenHeight / 2, 50, BLACK);
-        //     gameOverTimer -= GetFrameTime();
-        //     if (gameOverTimer <= 0)
-        //     {
-        //         CloseWindow();
-        //     }
-        // }
         DrawText(textTest, 0, 0, 20, GREEN);
 
         EndDrawing();
