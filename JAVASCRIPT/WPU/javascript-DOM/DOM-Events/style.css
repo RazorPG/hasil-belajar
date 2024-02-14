@@ -1,0 +1,21 @@
+* {
+  border: 2px solid #dedede;
+  padding: 10px;
+  margin: 15px;
+}
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  max-width: 600px;
+  margin: 30px auto;
+  font-family: sans-serif;
+  color: #333;
+}
+/* #b p{
+      color:rgb(100, 60, 70);
+    }
+    #b ul li:nth-child(2){
+      background: orange;
+    } */
