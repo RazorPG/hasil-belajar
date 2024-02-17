@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgb(197, 140, 197);
+}
+h1 {
+  color: white;
+  text-shadow: 3px 2px black;
+  text-align: center;
+}
+.container {
+  border: 5px solid rgb(97, 24, 97);
+  overflow: hidden;
+  width: 85vw;
+  margin: auto;
+  background-color: azure;
+  border-radius: 25px;
+  position: relative;
+}
+
+.container-game {
+  padding: 3rem 0;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(13, 13, 170, 1) 41%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info {
+  font-size: 4rem;
+  color: blueviolet;
+  text-shadow: 4px 3px black;
+}
+
+.area-player img,
+.area-computer img {
+  border-radius: 50%;
+  border: 5px solid rgb(97, 24, 97);
+}
+.area-option {
+  padding: 1rem 0;
+  background: rgb(245, 154, 174);
+  background: linear-gradient(
+    90deg,
+    rgba(245, 154, 174, 1) 0%,
+    rgba(113, 238, 223, 1) 50%,
+    rgba(228, 233, 105, 1) 100%
+  );
+  border-top: 5px solid rgb(97, 24, 97);
+}
+
+.area-option ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

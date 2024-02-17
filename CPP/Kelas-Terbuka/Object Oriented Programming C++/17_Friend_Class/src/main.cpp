@@ -3,12 +3,11 @@
 
 using namespace std;
 
-// belajar tentang friend class
-// akses friend class hanya satu arah, tidak berlaku sebaliknya
-// friend class akan memberikan akses dari class yang mendeklarasikan friend
+class PersegiPanjang; // Forward declaration
+
 class Persegi
 {
-    friend class PersegiPanjang; // memberikan akses seluruh atribut dan method kepada class PersegiPanjang
+    friend class PersegiPanjang;
 
 private:
     double sisi;
@@ -24,16 +23,13 @@ public:
         return this->sisi * this->sisi;
     }
 
-    bool moreLong(const PersegiPanjang *persegiPanjang)
-    {
-        bool isTrue = this->sisi > persegiPanjang->panjang;
-        return isTrue;
-    }
+    bool moreLong(const PersegiPanjang &persegiPanjang);
 };
 
 class PersegiPanjang
 {
-    friend class Persegi; // memberikan akses seluruh atribut dan method kepada class Persegi
+    friend class Persegi;
+
 private:
     double panjang;
     double lebar;
@@ -50,21 +46,22 @@ public:
         return this->panjang * this->lebar;
     }
 
-    bool moreLong(const Persegi *persegi)
+    bool moreLong(const Persegi &persegi)
     {
-        bool isTrue = this->panjang > persegi->sisi;
-        return isTrue;
+        return this->panjang > persegi.sisi;
     }
 };
 
-int main(int argc, char const *argv[])
+int main()
 {
-    Persegi *persegi = new Persegi(10);
-    PersegiPanjang persegiPanjang = PersegiPanjang(5, 10);
+    Persegi persegi(10);
+    PersegiPanjang persegiPanjang(5, 10);
 
-    cout << "luas persegi = " << persegi->luas() << endl;
-    cout << "luas persegi panjang = " << persegiPanjang.luas() << endl;
+    cout << "Luas persegi = " << persegi.luas() << endl;
+    cout << "Luas persegi panjang = " << persegiPanjang.luas() << endl;
+
     bool logika = persegiPanjang.moreLong(persegi);
-    cout << "apakah persegi panjang lebih panjang dari persegi = " << logika << endl;
+    cout << "Apakah persegi panjang lebih panjang dari persegi = " << logika << endl;
+
     return 0;
 }
