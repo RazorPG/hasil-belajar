@@ -1,1 +1,0 @@
-    insert_node(&root, 12);
