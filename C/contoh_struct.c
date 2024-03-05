@@ -5,6 +5,7 @@ struct daftar_siswa
     char *nama;
     char *asal;
     int umur;
+    struct daftar_siswa *razor;
 };
 
 int main()

@@ -23,6 +23,16 @@ h1 {
   position: relative;
 }
 
+.container-score {
+  display: flex;
+  justify-content: space-around;
+}
+.container-score h2 {
+  font-size: 3rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: purple;
+}
+
 .container-game {
   padding: 3rem 0;
   background: rgb(2, 0, 36);

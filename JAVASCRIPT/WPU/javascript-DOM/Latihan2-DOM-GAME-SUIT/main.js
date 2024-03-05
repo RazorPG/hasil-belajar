@@ -1,16 +1,16 @@
 let getOptionComputer = () => {
   var comp = Math.round(Math.random() * 3 + 1);
-  if (comp == 1) return "rock";
-  if (comp == 2) return "scissor";
-  return "paper";
+  return comp == 1 ? "rock" : comp == 2 ? "scissor" : "paper";
 };
 
-const getResult = (comp, player) => {
-  if (player == comp) return "DRAW";
-  if (player == "rock") return comp == "scissor" ? "WIN" : "LOSE";
-  if (player == "scissor") return comp == "paper" ? "WIN" : "LOSE";
-  if (player == "paper") return comp == "rock" ? "WIN" : "LOSE";
-};
+const getResult = (comp, player) =>
+  player == comp
+    ? "DRAW"
+    : (player == "rock" && comp == "scissor") ||
+      (player == "scissor" && comp == "paper") ||
+      (player == "paper" && comp == "rock")
+    ? "WIN"
+    : "LOSE";
 
 function randomImg() {
   const imgComputer = document.querySelector(".img-computer");
@@ -44,6 +44,8 @@ options.forEach(function (option) {
     }, 1000);
   });
 });
+
+const score = document.querySelectorAll(".scoring");
 
 // const oRock = document.querySelector(".rock");
 // const oScissor = document.querySelector(".scissor");

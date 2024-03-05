@@ -1,12 +1,4 @@
 #include <stdio.h>
-// int main()
-// {
-//     int nilai[5] = {22, 33, 44, 66, 21};
-
-//     int length = sizeof(nilai) / sizeof(*nilai);
-
-//     printf("banyaknya isi array nilai: %d\n", length);
-// }
 
 int main()
 {
@@ -21,7 +13,7 @@ int main()
         v++;
     }
 
-    int length = sizeof(tinggi_badan) / sizeof(*tinggi_badan);
+    int length = sizeof(tinggi_badan) / sizeof(tinggi_badan[0]);
 
     for (int i = 0; i < length; i++)
     {
