@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 let getOptionComputer = () => {
   var comp = Math.round(Math.random() * 3 + 1);
   return comp == 1 ? "rock" : comp == 2 ? "scissor" : "paper";
@@ -41,11 +44,25 @@ options.forEach(function (option) {
       imgComputer.setAttribute("src", `img/${optionComputer}.png`);
       const info = document.querySelector(".info");
       info.innerHTML = result;
+
+      if (result === "WIN") {
+        playerScore++;
+      } else if (result === "LOSE") {
+        computerScore++;
+      }
+
+      if (playerScore === 3 || computerScore === 3) {
+        // Reset scores
+        playerScore = 0;
+        computerScore = 0;
+      }
+
+      // Display scores
+      const scoreInfo = document.querySelector(".score-info");
+      scoreInfo.innerHTML = `Player: ${playerScore} | Computer: ${computerScore}`;
     }, 1000);
   });
 });
-
-const score = document.querySelectorAll(".scoring");
 
 // const oRock = document.querySelector(".rock");
 // const oScissor = document.querySelector(".scissor");

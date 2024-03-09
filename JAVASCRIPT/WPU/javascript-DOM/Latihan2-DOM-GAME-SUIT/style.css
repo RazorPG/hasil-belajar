@@ -101,3 +101,9 @@ h1 {
   justify-content: center;
   gap: 20px;
 }
+
+.score-info{
+  text-align: center;
+  color: blueviolet;
+  font-weight: bold;
+}
