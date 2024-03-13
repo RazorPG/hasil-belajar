@@ -61,7 +61,7 @@ max-width: 800px;
 margin: 50px auto;
 display: flex;
 flex-wrap: wrap;
-justify-content: center;
+justify-content: space-around;
 }
 .thumbnail {
   width:50%;
@@ -102,13 +102,13 @@ justify-content: center;
 .container-lima {
   width: 500px;
   height: 500px;
-  margin: 50px auto;
+  margin: auto;
   Border: 5px solid black;
    display: flex;
    text-align: center;
 }
 .kotak {
-  width:100px ;
+  width:100px;
   height:100px ;
   background-color: brown;
   color: white;
